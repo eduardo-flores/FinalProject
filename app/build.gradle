@@ -31,6 +31,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "tier"
+    productFlavors {
+        free {
+            dimension "tier"
+            applicationIdSuffix ".free"
+        }
+
+        paid {
+            dimension "tier"
+            applicationIdSuffix ".paid"
+        }
+    }
 }
 
 dependencies {
@@ -39,7 +52,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
-    implementation 'com.google.android.gms:play-services-ads:18.3.0'
+    freeImplementation 'com.google.android.gms:play-services-ads:18.3.0'
 
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'

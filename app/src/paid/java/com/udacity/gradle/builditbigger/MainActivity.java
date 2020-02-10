@@ -14,6 +14,7 @@ import com.flores.jokedisplay.JokeDisplayActivity;
 
 public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.EndpointsListener {
 
+    private final String TAG = MainActivity.class.getSimpleName();
     ProgressBar progressBar;
 
     @Override
@@ -51,11 +52,15 @@ public class MainActivity extends AppCompatActivity implements EndpointsAsyncTas
         new EndpointsAsyncTask().execute(this);
     }
 
+    private void showJoke(String joke) {
+        Intent intent = new Intent(this, JokeDisplayActivity.class);
+        intent.putExtra(JokeDisplayActivity.EXTRA_JOKE_DISPLAY, joke);
+        startActivity(intent);
+    }
+
     @Override
     public void onPostExecute(String result) {
         progressBar.setVisibility(View.GONE);
-        Intent intent = new Intent(this, JokeDisplayActivity.class);
-        intent.putExtra(JokeDisplayActivity.EXTRA_JOKE_DISPLAY, result);
-        startActivity(intent);
+        showJoke(result);
     }
 }

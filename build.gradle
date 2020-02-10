@@ -20,3 +20,33 @@ allprojects {
         google()
     }
 }
+
+
+task startLocalDevServer {
+    dependsOn ':backend:appengineStart'
+    doLast {
+        println "GCE local development server launched..."
+    }
+}
+
+task runAllTests {
+    dependsOn ':app:connectedAndroidTest'
+    doLast {
+        println "All tests executed..."
+    }
+}
+
+task stopLocalDevServer {
+    dependsOn ':backend:appengineStop'
+    doLast {
+        println "GCE local development server stopped..."
+    }
+}
+
+task executeAllTogether {
+    dependsOn 'startLocalDevServer'
+    dependsOn 'runAllTests'
+    dependsOn 'stopLocalDevServer'
+    startLocalDevServer.finalizedBy runAllTests
+    runAllTests.finalizedBy stopLocalDevServer
+}
