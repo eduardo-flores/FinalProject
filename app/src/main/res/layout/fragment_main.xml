@@ -23,18 +23,6 @@
         android:onClick="tellJoke"
         android:text="@string/button_text" />
 
-    <TextView
-        android:id="@+id/tv_joke"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_tell_joke"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        tools:text="Joke to be appear here!" />
-
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="wrap_content"
