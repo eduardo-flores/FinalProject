@@ -1,3 +1,12 @@
+## [ERROR] when executing gradle :backend:appengineStart
+What went wrong:
+ Execution failed for task ':backend:appengineStart'.
+ > The Google Cloud SDK could not be found in the customary locations and no path was provided.
+ 
+To fix add the path of google-cloud-sdk on build.gradle of backend module
+```
+appengine.tools.cloudSdkHome="PATH to google-cloud-sdk folder"
+```
 # Gradle for Android and Java Final Project
 
 In this project, you will create an app with multiple flavors that uses
